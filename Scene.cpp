@@ -76,10 +76,11 @@ void Scene::render(uint8_t num_instances)
  	
 	if(mesh != NULL)
 	{
-		basicProgram.setUniform4f("color", 0.9f, 0.9f, 0.95f, 1.0f);
+		
 		glm::mat4 modelView;
 		for (int x = 0; x < num_instances; x++){
 			for (int y = 0; y < num_instances; y++){
+				basicProgram.setUniform4f("color", 0.95f - 0.7f * x / num_instances, 0.3f, 0.25f + 0.7f * y / num_instances, 1.0f);
 				modelView = camera.getModelViewMatrix();
 				modelView = glm::translate(modelView, glm::vec3(x * 1.0f, 0.0f, y * 1.0f));
 				basicProgram.setUniformMatrix4f("modelview", modelView);

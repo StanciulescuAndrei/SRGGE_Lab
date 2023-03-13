@@ -105,18 +105,10 @@ void Application::resize(int width, int height)
 
 void Application::keyPressed(int key)
 {
-	if(key == 0x31){
-		num_instances = 1;
+	if(key >= 0x31 && key <= 0x39){
+		num_instances = key - 0x30;
 	}
-	else if(key == 0x32){
-		num_instances = 2;
-	}
-	else if(key == 0x33){
-		num_instances = 3;
-	}
-	else if(key == 0x34){
-		num_instances = 4;
-	}
+	
 	if(key == 27) // Escape code
 		bPlay = false;
 	keys[key] = true;
