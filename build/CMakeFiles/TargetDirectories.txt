@@ -1,0 +1,3 @@
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles/BaseCode.dir
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles/edit_cache.dir
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles/rebuild_cache.dir
