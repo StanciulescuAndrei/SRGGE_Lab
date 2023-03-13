@@ -65,7 +65,7 @@ void Scene::update(int deltaTime)
 
 // Render the scene. First the room, then the mesh it there is one loaded.
 
-void Scene::render()
+void Scene::render(uint8_t num_instances)
 {
 	glm::mat3 normalMatrix;
 
@@ -76,13 +76,22 @@ void Scene::render()
  	
 	if(mesh != NULL)
 	{
- 		basicProgram.setUniform4f("color", 0.9f, 0.9f, 0.95f, 1.0f);
-		glm::mat4 modelView = camera.getModelViewMatrix();
-		modelView = glm::translate(modelView, glm::vec3(1.0f, 1.0f, 1.0f));
-		basicProgram.setUniformMatrix4f("modelview", modelView);
-		normalMatrix = glm::inverseTranspose(camera.getModelViewMatrix());
-		basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
-		mesh->render();
+		basicProgram.setUniform4f("color", 0.9f, 0.9f, 0.95f, 1.0f);
+		glm::mat4 modelView;
+		for (int x = 0; x < num_instances; x++){
+			for (int y = 0; y < num_instances; y++){
+				modelView = camera.getModelViewMatrix();
+				modelView = glm::translate(modelView, glm::vec3(x * 1.0f, 0.0f, y * 1.0f));
+				basicProgram.setUniformMatrix4f("modelview", modelView);
+				normalMatrix = glm::inverseTranspose(camera.getModelViewMatrix());
+				basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+				mesh->render();
+			}
+		}
+ 		
+		
+		
+		
 	}
 }
 

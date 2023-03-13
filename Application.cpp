@@ -81,7 +81,7 @@ void Application::render()
 
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	scene.render();
+	scene.render(num_instances);
 	
 	if(bNavigation)
 	{
@@ -105,6 +105,18 @@ void Application::resize(int width, int height)
 
 void Application::keyPressed(int key)
 {
+	if(key == 0x31){
+		num_instances = 1;
+	}
+	else if(key == 0x32){
+		num_instances = 2;
+	}
+	else if(key == 0x33){
+		num_instances = 3;
+	}
+	else if(key == 0x34){
+		num_instances = 4;
+	}
 	if(key == 27) // Escape code
 		bPlay = false;
 	keys[key] = true;

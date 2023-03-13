@@ -22,7 +22,7 @@ public:
 	void init();
 	bool loadMesh(const char *filename);
 	void update(int deltaTime);
-	void render();
+	void render(uint8_t num_instances);
 
   VectorCamera &getCamera();
 

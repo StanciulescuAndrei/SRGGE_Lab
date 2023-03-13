@@ -55,7 +55,8 @@ private:
 	glm::ivec2 windowSize; 						// Window size before going fullscreen
 	int32_t start_time = 0;
 	int32_t end_time = 0;
-	int16_t framecounter = 0;                                  
+	int16_t framecounter = 0; 
+	int16_t num_instances = 1;                                 
 };
 
 
