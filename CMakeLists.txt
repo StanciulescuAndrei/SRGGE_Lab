@@ -30,7 +30,7 @@ link_directories(${OPENGL_LIBRARY_DIRS})
 link_directories(${GLUT_LIBRARY_DIRS})
 link_directories(${GLEW_LIBRARY_DIRS})
 
-add_executable(${appName} PLYReader.h PLYReader.cpp TriangleMesh.h TriangleMesh.cpp VectorCamera.h VectorCamera.cpp Scene.h Scene.cpp Shader.h Shader.cpp ShaderProgram.h ShaderProgram.cpp Application.h Application.cpp main.cpp)
+add_executable(${appName} Simplifier.h Simplifier.cpp PLYReader.h PLYReader.cpp TriangleMesh.h TriangleMesh.cpp VectorCamera.h VectorCamera.cpp Scene.h Scene.cpp Shader.h Shader.cpp ShaderProgram.h ShaderProgram.cpp Application.h Application.cpp main.cpp)
 
 target_link_libraries(${appName} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${GLEW_LIBRARIES})
 

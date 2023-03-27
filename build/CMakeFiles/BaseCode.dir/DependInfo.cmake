@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Scene.cpp" "CMakeFiles/BaseCode.dir/Scene.cpp.o" "gcc" "CMakeFiles/BaseCode.dir/Scene.cpp.o.d"
   "/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Shader.cpp" "CMakeFiles/BaseCode.dir/Shader.cpp.o" "gcc" "CMakeFiles/BaseCode.dir/Shader.cpp.o.d"
   "/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/ShaderProgram.cpp" "CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o" "gcc" "CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o.d"
+  "/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Simplifier.cpp" "CMakeFiles/BaseCode.dir/Simplifier.cpp.o" "gcc" "CMakeFiles/BaseCode.dir/Simplifier.cpp.o.d"
   "/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/TriangleMesh.cpp" "CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o" "gcc" "CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o.d"
   "/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/VectorCamera.cpp" "CMakeFiles/BaseCode.dir/VectorCamera.cpp.o" "gcc" "CMakeFiles/BaseCode.dir/VectorCamera.cpp.o.d"
   "/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/main.cpp" "CMakeFiles/BaseCode.dir/main.cpp.o" "gcc" "CMakeFiles/BaseCode.dir/main.cpp.o.d"

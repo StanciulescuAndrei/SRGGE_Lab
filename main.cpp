@@ -1,6 +1,8 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include "Application.h"
+#include "Simplifier.h"
+#include <stdlib.h>
 
 
 //Remove console (only works in Visual Studio)
@@ -12,6 +14,7 @@
 
 static int prevTime;
 static Application app; // This object represents our whole app
+static Simplifier simplifier;
 
 
 // If a key is pressed this callback is called
@@ -137,8 +140,20 @@ int main(int argc, char **argv)
 	
 	// Application instance initialization
 	Application::instance().init();
-	if(argc > 1)
+	if(argc == 2){
 	  Application::instance().loadMesh(argv[1]);
+	}
+	else if(argc == 3 && strcmp(argv[1], "simplify") == 0){
+		printf("Starting LOD generation...\n");
+		Simplifier::instance().loadMesh(argv[2]);
+		printf("Computing LOD...\n");
+		Simplifier::instance().computeLODs(3);
+		printf("Writing simplified mesh...\n");
+		Simplifier::instance().writeSimplifications();
+		printf("Done...\n");
+		return 0;
+	}
+
 	prevTime = glutGet(GLUT_ELAPSED_TIME);
 	// GLUT gains control of the application
 	glutMainLoop();

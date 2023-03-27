@@ -35,6 +35,27 @@ bool PLYReader::readMesh(const string &filename, TriangleMesh &mesh)
 	return true;
 }
 
+bool PLYReader::readSimplified(const string &filename, vector<float> &vertices, vector<int> &faces)
+{
+	ifstream fin;
+	int nVertices, nFaces;
+
+	fin.open(filename.c_str(), ios_base::in | ios_base::binary);
+	if(!fin.is_open())
+		return false;
+	if(!loadHeader(fin, nVertices, nFaces))
+	{
+		fin.close();
+		return false;
+	}
+
+	loadVertices(fin, nVertices, vertices);
+	loadFaces(fin, nFaces, faces);
+	fin.close();
+
+	return true;
+}
+
 // Reads the header of a PLY file.
 // It first checks that the file is really a PLY. 
 // Then it reads lines until it finds the 'end_header'

@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/BaseCode.dir/Shader.cpp.o.d"
   "CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o"
   "CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o.d"
+  "CMakeFiles/BaseCode.dir/Simplifier.cpp.o"
+  "CMakeFiles/BaseCode.dir/Simplifier.cpp.o.d"
   "CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o"
   "CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o.d"
   "CMakeFiles/BaseCode.dir/VectorCamera.cpp.o"

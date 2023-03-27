@@ -249,6 +249,30 @@ ShaderProgram.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BaseCode.dir/build.make CMakeFiles/BaseCode.dir/ShaderProgram.cpp.s
 .PHONY : ShaderProgram.cpp.s
 
+Simplifier.o: Simplifier.cpp.o
+.PHONY : Simplifier.o
+
+# target to build an object file
+Simplifier.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BaseCode.dir/build.make CMakeFiles/BaseCode.dir/Simplifier.cpp.o
+.PHONY : Simplifier.cpp.o
+
+Simplifier.i: Simplifier.cpp.i
+.PHONY : Simplifier.i
+
+# target to preprocess a source file
+Simplifier.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BaseCode.dir/build.make CMakeFiles/BaseCode.dir/Simplifier.cpp.i
+.PHONY : Simplifier.cpp.i
+
+Simplifier.s: Simplifier.cpp.s
+.PHONY : Simplifier.s
+
+# target to generate assembly for a file
+Simplifier.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BaseCode.dir/build.make CMakeFiles/BaseCode.dir/Simplifier.cpp.s
+.PHONY : Simplifier.cpp.s
+
 TriangleMesh.o: TriangleMesh.cpp.o
 .PHONY : TriangleMesh.o
 
@@ -345,6 +369,9 @@ help:
 	@echo "... ShaderProgram.o"
 	@echo "... ShaderProgram.i"
 	@echo "... ShaderProgram.s"
+	@echo "... Simplifier.o"
+	@echo "... Simplifier.i"
+	@echo "... Simplifier.s"
 	@echo "... TriangleMesh.o"
 	@echo "... TriangleMesh.i"
 	@echo "... TriangleMesh.s"
