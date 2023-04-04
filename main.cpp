@@ -148,9 +148,11 @@ int main(int argc, char **argv)
 		Simplifier::instance().loadMesh(argv[2]);
 		printf("Computing LOD...\n");
 		Simplifier::instance().computeLODs(3);
-		printf("Writing simplified mesh...\n");
-		Simplifier::instance().writeSimplifications();
 		printf("Done...\n");
+		return 0;
+	}
+	else{
+		printf("Incorrect usage!\n");
 		return 0;
 	}
 

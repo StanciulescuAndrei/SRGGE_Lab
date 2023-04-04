@@ -69,10 +69,24 @@ include CMakeFiles/BaseCode.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/BaseCode.dir/flags.make
 
+CMakeFiles/BaseCode.dir/Octree.cpp.o: CMakeFiles/BaseCode.dir/flags.make
+CMakeFiles/BaseCode.dir/Octree.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Octree.cpp
+CMakeFiles/BaseCode.dir/Octree.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BaseCode.dir/Octree.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/Octree.cpp.o -MF CMakeFiles/BaseCode.dir/Octree.cpp.o.d -o CMakeFiles/BaseCode.dir/Octree.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Octree.cpp
+
+CMakeFiles/BaseCode.dir/Octree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BaseCode.dir/Octree.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Octree.cpp > CMakeFiles/BaseCode.dir/Octree.cpp.i
+
+CMakeFiles/BaseCode.dir/Octree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BaseCode.dir/Octree.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Octree.cpp -o CMakeFiles/BaseCode.dir/Octree.cpp.s
+
 CMakeFiles/BaseCode.dir/Simplifier.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/Simplifier.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Simplifier.cpp
 CMakeFiles/BaseCode.dir/Simplifier.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BaseCode.dir/Simplifier.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BaseCode.dir/Simplifier.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/Simplifier.cpp.o -MF CMakeFiles/BaseCode.dir/Simplifier.cpp.o.d -o CMakeFiles/BaseCode.dir/Simplifier.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Simplifier.cpp
 
 CMakeFiles/BaseCode.dir/Simplifier.cpp.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/BaseCode.dir/Simplifier.cpp.s: cmake_force
 CMakeFiles/BaseCode.dir/PLYReader.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/PLYReader.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.cpp
 CMakeFiles/BaseCode.dir/PLYReader.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BaseCode.dir/PLYReader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BaseCode.dir/PLYReader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/PLYReader.cpp.o -MF CMakeFiles/BaseCode.dir/PLYReader.cpp.o.d -o CMakeFiles/BaseCode.dir/PLYReader.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.cpp
 
 CMakeFiles/BaseCode.dir/PLYReader.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/BaseCode.dir/PLYReader.cpp.s: cmake_force
 CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/TriangleMesh.cpp
 CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o -MF CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o.d -o CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/TriangleMesh.cpp
 
 CMakeFiles/BaseCode.dir/TriangleMesh.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/BaseCode.dir/TriangleMesh.cpp.s: cmake_force
 CMakeFiles/BaseCode.dir/VectorCamera.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/VectorCamera.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/VectorCamera.cpp
 CMakeFiles/BaseCode.dir/VectorCamera.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BaseCode.dir/VectorCamera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BaseCode.dir/VectorCamera.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/VectorCamera.cpp.o -MF CMakeFiles/BaseCode.dir/VectorCamera.cpp.o.d -o CMakeFiles/BaseCode.dir/VectorCamera.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/VectorCamera.cpp
 
 CMakeFiles/BaseCode.dir/VectorCamera.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/BaseCode.dir/VectorCamera.cpp.s: cmake_force
 CMakeFiles/BaseCode.dir/Scene.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/Scene.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Scene.cpp
 CMakeFiles/BaseCode.dir/Scene.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BaseCode.dir/Scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BaseCode.dir/Scene.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/Scene.cpp.o -MF CMakeFiles/BaseCode.dir/Scene.cpp.o.d -o CMakeFiles/BaseCode.dir/Scene.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Scene.cpp
 
 CMakeFiles/BaseCode.dir/Scene.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/BaseCode.dir/Scene.cpp.s: cmake_force
 CMakeFiles/BaseCode.dir/Shader.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/Shader.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Shader.cpp
 CMakeFiles/BaseCode.dir/Shader.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BaseCode.dir/Shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BaseCode.dir/Shader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/Shader.cpp.o -MF CMakeFiles/BaseCode.dir/Shader.cpp.o.d -o CMakeFiles/BaseCode.dir/Shader.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Shader.cpp
 
 CMakeFiles/BaseCode.dir/Shader.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/BaseCode.dir/Shader.cpp.s: cmake_force
 CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/ShaderProgram.cpp
 CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o -MF CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o.d -o CMakeFiles/BaseCode.dir/ShaderProgram.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/ShaderProgram.cpp
 
 CMakeFiles/BaseCode.dir/ShaderProgram.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/BaseCode.dir/ShaderProgram.cpp.s: cmake_force
 CMakeFiles/BaseCode.dir/Application.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/Application.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Application.cpp
 CMakeFiles/BaseCode.dir/Application.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BaseCode.dir/Application.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BaseCode.dir/Application.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/Application.cpp.o -MF CMakeFiles/BaseCode.dir/Application.cpp.o.d -o CMakeFiles/BaseCode.dir/Application.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Application.cpp
 
 CMakeFiles/BaseCode.dir/Application.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/BaseCode.dir/Application.cpp.s: cmake_force
 CMakeFiles/BaseCode.dir/main.cpp.o: CMakeFiles/BaseCode.dir/flags.make
 CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/main.cpp
 CMakeFiles/BaseCode.dir/main.cpp.o: CMakeFiles/BaseCode.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BaseCode.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/BaseCode.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BaseCode.dir/main.cpp.o -MF CMakeFiles/BaseCode.dir/main.cpp.o.d -o CMakeFiles/BaseCode.dir/main.cpp.o -c /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/main.cpp
 
 CMakeFiles/BaseCode.dir/main.cpp.i: cmake_force
@@ -197,6 +211,7 @@ CMakeFiles/BaseCode.dir/main.cpp.s: cmake_force
 
 # Object files for target BaseCode
 BaseCode_OBJECTS = \
+"CMakeFiles/BaseCode.dir/Octree.cpp.o" \
 "CMakeFiles/BaseCode.dir/Simplifier.cpp.o" \
 "CMakeFiles/BaseCode.dir/PLYReader.cpp.o" \
 "CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o" \
@@ -210,6 +225,7 @@ BaseCode_OBJECTS = \
 # External object files for target BaseCode
 BaseCode_EXTERNAL_OBJECTS =
 
+BaseCode: CMakeFiles/BaseCode.dir/Octree.cpp.o
 BaseCode: CMakeFiles/BaseCode.dir/Simplifier.cpp.o
 BaseCode: CMakeFiles/BaseCode.dir/PLYReader.cpp.o
 BaseCode: CMakeFiles/BaseCode.dir/TriangleMesh.cpp.o
@@ -226,7 +242,7 @@ BaseCode: /usr/lib/x86_64-linux-gnu/libglut.so
 BaseCode: /usr/lib/x86_64-linux-gnu/libXi.so
 BaseCode: /usr/lib/x86_64-linux-gnu/libGLEW.so
 BaseCode: CMakeFiles/BaseCode.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable BaseCode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable BaseCode"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BaseCode.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

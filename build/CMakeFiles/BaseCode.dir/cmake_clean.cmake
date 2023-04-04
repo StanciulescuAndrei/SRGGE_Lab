@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "BaseCode.pdb"
   "CMakeFiles/BaseCode.dir/Application.cpp.o"
   "CMakeFiles/BaseCode.dir/Application.cpp.o.d"
+  "CMakeFiles/BaseCode.dir/Octree.cpp.o"
+  "CMakeFiles/BaseCode.dir/Octree.cpp.o.d"
   "CMakeFiles/BaseCode.dir/PLYReader.cpp.o"
   "CMakeFiles/BaseCode.dir/PLYReader.cpp.o.d"
   "CMakeFiles/BaseCode.dir/Scene.cpp.o"

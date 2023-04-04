@@ -3,6 +3,8 @@
 
 #include "PLYReader.h"
 #include <vector>
+#include <queue>
+#include "Octree.h"
 
 using namespace std;
 
@@ -17,13 +19,14 @@ public:
 
     bool loadMesh(const char* filename);
     bool computeLODs(int numLODs);
-    bool writeSimplifications();
+    bool writeSimplifications(std::vector<glm::vec3> vertices, std::vector<glm::ivec3> faces, int level);
 
 private:
     int numLODs;
-    char output_folder[256];
+    string output_folder;
     vector<glm::vec3> vertices;
     vector<glm::ivec3> faces;
+    glm::vec3 bbox[2];
 };
 
 

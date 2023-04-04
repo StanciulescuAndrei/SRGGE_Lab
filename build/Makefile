@@ -153,6 +153,30 @@ Application.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BaseCode.dir/build.make CMakeFiles/BaseCode.dir/Application.cpp.s
 .PHONY : Application.cpp.s
 
+Octree.o: Octree.cpp.o
+.PHONY : Octree.o
+
+# target to build an object file
+Octree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BaseCode.dir/build.make CMakeFiles/BaseCode.dir/Octree.cpp.o
+.PHONY : Octree.cpp.o
+
+Octree.i: Octree.cpp.i
+.PHONY : Octree.i
+
+# target to preprocess a source file
+Octree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BaseCode.dir/build.make CMakeFiles/BaseCode.dir/Octree.cpp.i
+.PHONY : Octree.cpp.i
+
+Octree.s: Octree.cpp.s
+.PHONY : Octree.s
+
+# target to generate assembly for a file
+Octree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BaseCode.dir/build.make CMakeFiles/BaseCode.dir/Octree.cpp.s
+.PHONY : Octree.cpp.s
+
 PLYReader.o: PLYReader.cpp.o
 .PHONY : PLYReader.o
 
@@ -357,6 +381,9 @@ help:
 	@echo "... Application.o"
 	@echo "... Application.i"
 	@echo "... Application.s"
+	@echo "... Octree.o"
+	@echo "... Octree.i"
+	@echo "... Octree.s"
 	@echo "... PLYReader.o"
 	@echo "... PLYReader.i"
 	@echo "... PLYReader.s"
