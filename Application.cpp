@@ -12,14 +12,14 @@
 
 // Initialize GL and the attributes of Application
 
-void Application::init()
+void Application::init(TileMap tilemap)
 {
 	bPlay = true;
 	glClearColor(1.f, 1.f, 1.f, 1.0f); 		// Background = white color
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	// Initialize the scene object
-	scene.init();
+	scene.init(tilemap);
 	
 	// State attributes needed to track keyboard & mouse
 	for(unsigned int i=0; i<256; i++)

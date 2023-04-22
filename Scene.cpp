@@ -25,13 +25,14 @@ Scene::~Scene()
 // Initialize the scene. This includes the cube we will use to render
 // the floor and walls, as well as the camera.
 
-void Scene::init()
+void Scene::init(TileMap _tilemap)
 {
 	initShaders();
 	cube = new TriangleMesh();
 	cube->buildCube();
 	cube->sendToOpenGL(basicProgram);
 	currentTime = 0.0f;
+	tilemap = _tilemap;
 	
 	camera.init(glm::vec3(0.f, 0.5f, 2.f));
 }
@@ -78,21 +79,21 @@ void Scene::render(uint8_t num_instances)
 	{
 		
 		glm::mat4 modelView;
-		for (int x = 0; x < num_instances; x++){
-			for (int y = 0; y < num_instances; y++){
-				basicProgram.setUniform4f("color", 0.95f - 0.7f * x / num_instances, 0.3f, 0.25f + 0.7f * y / num_instances, 1.0f);
-				modelView = camera.getModelViewMatrix();
-				modelView = glm::translate(modelView, glm::vec3(x * 1.0f, 0.0f, y * 1.0f));
-				basicProgram.setUniformMatrix4f("modelview", modelView);
-				normalMatrix = glm::inverseTranspose(camera.getModelViewMatrix());
-				basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
-				mesh->render();
-			}
-		}
  		
-		
-		
-		
+		for(int y = 0; y < tilemap.height; y++){
+			for(int x = 0; x < tilemap.width; x++){
+				bool moai = (tilemap.GetTile(x, y) > 0 && tilemap.GetTile(x, y) < 255);
+				if(moai){
+					basicProgram.setUniform4f("color", 0.75f, 0.15f, 0.65f, 1.0f);
+					modelView = camera.getModelViewMatrix();
+					modelView = glm::translate(modelView, glm::vec3(x * 1.0f, 0.0f, y * 1.0f));
+					basicProgram.setUniformMatrix4f("modelview", modelView);
+					normalMatrix = glm::inverseTranspose(camera.getModelViewMatrix());
+					basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+					mesh->render();
+				}
+			}	
+		}
 	}
 }
 
@@ -141,47 +142,83 @@ void Scene::renderRoom()
 	glm::mat3 normalMatrix;
 	glm::mat4 modelview;
 
- 	basicProgram.setUniform4f("color", 0.5f, 0.5f, 0.55f, 1.0f);
+ 	
 
- 	modelview = camera.getModelViewMatrix();
- 	modelview = glm::translate(modelview, glm::vec3(0.f, -0.5f, 0.f));
- 	modelview = glm::scale(modelview, glm::vec3(20.f, 1.f, 20.f));
-	basicProgram.setUniformMatrix4f("modelview", modelview);
-	normalMatrix = glm::inverseTranspose(modelview);
-	basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
-	cube->render();
+	for(int y = -1; y <= tilemap.height; y++){
+		for(int x = -1; x <= tilemap.width; x++){
+			bool floor = (tilemap.GetTile(x, y) > 0);
+			if(floor){
+				basicProgram.setUniform4f("color", 0.5f, 0.5f, 0.55f, 1.0f);
+				modelview = camera.getModelViewMatrix();
+ 				modelview = glm::translate(modelview, glm::vec3(x * 1.f, -0.5f, y * 1.f));
+ 				modelview = glm::scale(modelview, glm::vec3(1.f, 1.f, 1.f));
+				basicProgram.setUniformMatrix4f("modelview", modelview);
+				normalMatrix = glm::inverseTranspose(modelview);
+				basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+				cube->render();
+			}
+			else{
+				int dx[4] = {0, -1, 0, 1};
+				int dy[4] = {-1, 0, 1, 0};
+				int floors = 0;
+				for(int i=0;i<4;i++){
+					int nx = x + dx[i];
+					int ny = y + dy[i];
+					floors+=(tilemap.GetTile(nx, ny) > 0);
+				}
+				if(true){
+					basicProgram.setUniform4f("color", 0.5f, 0.65f, 0.45f, 1.0f);
+					modelview = camera.getModelViewMatrix();
+					modelview = glm::translate(modelview, glm::vec3(x * 1.f, 0.f, y * 1.f));
+					modelview = glm::scale(modelview, glm::vec3(1.f, 4.f, 1.f));
+					basicProgram.setUniformMatrix4f("modelview", modelview);
+					normalMatrix = glm::inverseTranspose(modelview);
+					basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+					cube->render();
+				}
+			}
+		}
+	}
+
+ 	// modelview = camera.getModelViewMatrix();
+ 	// modelview = glm::translate(modelview, glm::vec3(0.f, -0.5f, 0.f));
+ 	// modelview = glm::scale(modelview, glm::vec3(20.f, 1.f, 20.f));
+	// basicProgram.setUniformMatrix4f("modelview", modelview);
+	// normalMatrix = glm::inverseTranspose(modelview);
+	// basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+	// cube->render();
 	
- 	modelview = camera.getModelViewMatrix();
- 	modelview = glm::translate(modelview, glm::vec3(0.f, 1.f, -9.5f));
- 	modelview = glm::scale(modelview, glm::vec3(20.f, 2.f, 1.f));
-	basicProgram.setUniformMatrix4f("modelview", modelview);
-	normalMatrix = glm::inverseTranspose(modelview);
-	basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
-	cube->render();
+ 	// modelview = camera.getModelViewMatrix();
+ 	// modelview = glm::translate(modelview, glm::vec3(0.f, 1.f, -9.5f));
+ 	// modelview = glm::scale(modelview, glm::vec3(20.f, 2.f, 1.f));
+	// basicProgram.setUniformMatrix4f("modelview", modelview);
+	// normalMatrix = glm::inverseTranspose(modelview);
+	// basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+	// cube->render();
 	
- 	modelview = camera.getModelViewMatrix();
- 	modelview = glm::translate(modelview, glm::vec3(0.f, 1.f, 9.5f));
- 	modelview = glm::scale(modelview, glm::vec3(20.f, 2.f, 1.f));
-	basicProgram.setUniformMatrix4f("modelview", modelview);
-	normalMatrix = glm::inverseTranspose(modelview);
-	basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
-	cube->render();
+ 	// modelview = camera.getModelViewMatrix();
+ 	// modelview = glm::translate(modelview, glm::vec3(0.f, 1.f, 9.5f));
+ 	// modelview = glm::scale(modelview, glm::vec3(20.f, 2.f, 1.f));
+	// basicProgram.setUniformMatrix4f("modelview", modelview);
+	// normalMatrix = glm::inverseTranspose(modelview);
+	// basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+	// cube->render();
 	
- 	modelview = camera.getModelViewMatrix();
- 	modelview = glm::translate(modelview, glm::vec3(-9.5f, 1.f, 0.f));
- 	modelview = glm::scale(modelview, glm::vec3(1.f, 2.f, 20.f));
-	basicProgram.setUniformMatrix4f("modelview", modelview);
-	normalMatrix = glm::inverseTranspose(modelview);
-	basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
-	cube->render();
+ 	// modelview = camera.getModelViewMatrix();
+ 	// modelview = glm::translate(modelview, glm::vec3(-9.5f, 1.f, 0.f));
+ 	// modelview = glm::scale(modelview, glm::vec3(1.f, 2.f, 20.f));
+	// basicProgram.setUniformMatrix4f("modelview", modelview);
+	// normalMatrix = glm::inverseTranspose(modelview);
+	// basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+	// cube->render();
 	
- 	modelview = camera.getModelViewMatrix();
- 	modelview = glm::translate(modelview, glm::vec3(9.5f, 1.f, 0.f));
- 	modelview = glm::scale(modelview, glm::vec3(1.f, 2.f, 20.f));
-	basicProgram.setUniformMatrix4f("modelview", modelview);
-	normalMatrix = glm::inverseTranspose(modelview);
-	basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
-	cube->render();
+ 	// modelview = camera.getModelViewMatrix();
+ 	// modelview = glm::translate(modelview, glm::vec3(9.5f, 1.f, 0.f));
+ 	// modelview = glm::scale(modelview, glm::vec3(1.f, 2.f, 20.f));
+	// basicProgram.setUniformMatrix4f("modelview", modelview);
+	// normalMatrix = glm::inverseTranspose(modelview);
+	// basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+	// cube->render();
 }
 
 

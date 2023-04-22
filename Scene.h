@@ -6,6 +6,7 @@
 #include "VectorCamera.h"
 #include "ShaderProgram.h"
 #include "TriangleMesh.h"
+#include "TileMap.h"
 
 
 // Scene contains all the entities of our game.
@@ -19,8 +20,9 @@ public:
 	Scene();
 	~Scene();
 
-	void init();
+	void init(TileMap map);
 	bool loadMesh(const char *filename);
+	void loadMap(TileMap _map);
 	void update(int deltaTime);
 	void render(uint8_t num_instances);
 
@@ -36,6 +38,7 @@ private:
   VectorCamera camera;
 	TriangleMesh *cube, *mesh;
 	ShaderProgram basicProgram;
+	TileMap tilemap;
 	float currentTime;
 
 };

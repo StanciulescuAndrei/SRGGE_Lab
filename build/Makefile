@@ -410,6 +410,9 @@ help:
 	@echo "... main.s"
 .PHONY : help
 
+run: all
+	__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia ./BaseCode ../../models/moai.ply
+
 
 
 #=============================================================================

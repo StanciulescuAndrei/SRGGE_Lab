@@ -1,5 +1,9 @@
 #include "Octree.h"
 #include <stdio.h>
+#include <eigen3/Eigen/Dense>
+
+int current_node_id = 0;
+int QEM_nodes = 0;
 
 bool insideBBox(glm::vec3 *bbox, glm::vec3 point){
     bool inside = true;
@@ -40,7 +44,9 @@ void processNode(OctreeNode* currentNode, std::vector<glm::vec3>* vertices, int 
     }
 }
 
-void buildVertexLUT(OctreeNode* node, std::unordered_map<int, int>& lut, std::vector<glm::vec3>& octree_vertices, int crt_depth, int max_depth){
+void buildVertexLUT(OctreeNode* node, std::unordered_map<int, int>* lut, std::vector<glm::vec3>* octree_vertices, 
+                    int crt_depth, int max_depth, std::vector<glm::vec3>* vertices,
+                    std::vector<Eigen::Matrix4f>* error_metrics){
     if(node->verts_id.size() == 0){
         return;
     }
@@ -50,13 +56,32 @@ void buildVertexLUT(OctreeNode* node, std::unordered_map<int, int>& lut, std::ve
             return;
         }
         for (int i=0;i<8;i++){
-            buildVertexLUT(node->children[i], lut, octree_vertices, crt_depth+1, max_depth);
+            buildVertexLUT(node->children[i], lut, octree_vertices, crt_depth+1, max_depth, vertices, error_metrics);
         }
     }
     else if(crt_depth == max_depth){
-        octree_vertices.push_back(node->bbox[0]);
+
+        // Here we compute the QEM to determine the representative
+        Eigen::Matrix4f Qbar;
+        Qbar << 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+        glm::vec3 center(0.0f, 0.0f, 0.0f);
         for(auto v : node->verts_id){
-            lut[v] = current_node_id;
+            Qbar += error_metrics->at(v);
+            center += vertices->at(v);
+        }
+        Qbar(3, 0) = 0.0f; Qbar(3, 1) = 0.0f; Qbar(3, 2) = 0.0f; Qbar(3, 3) = 1.0f; 
+        center /= node->verts_id.size();
+        if(std::abs(Qbar.determinant()) > 0.001){
+            Eigen::Vector4f best_pos = Qbar.inverse() * Eigen::Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
+            octree_vertices->push_back(glm::vec3(best_pos(0), best_pos(1), best_pos(2)));
+            QEM_nodes+=1;
+        }
+        else{
+            octree_vertices->push_back(center);
+        }
+
+        for(auto v : node->verts_id){
+            (*lut)[v] = current_node_id;
         }
         current_node_id += 1;
     }

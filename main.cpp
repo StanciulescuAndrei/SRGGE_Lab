@@ -3,7 +3,10 @@
 #include "Application.h"
 #include "Simplifier.h"
 #include <stdlib.h>
+#include "TileMap.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 //Remove console (only works in Visual Studio)
 #pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
@@ -137,9 +140,17 @@ int main(int argc, char **argv)
 	// GLEW will take care of OpenGL extension functions
 	glewExperimental = GL_TRUE;
 	glewInit();
+
+	// Load image for tilemap
+	int w, h, comp;
+	uint8_t* img = stbi_load(  "../../map/tilemap.bmp", &w, &h, &comp, 3);
+	printf("Tilemap height: %d\n", h);
+	printf("Tilemap height: %d\n", w);
+	printf("Tilemap comp: %d\n", comp);
+	TileMap map(img, w, h, comp);
 	
 	// Application instance initialization
-	Application::instance().init();
+	Application::instance().init(map);
 	if(argc == 2){
 	  Application::instance().loadMesh(argv[1]);
 	}

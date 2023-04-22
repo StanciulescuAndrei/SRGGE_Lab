@@ -27,7 +27,7 @@ bool Simplifier::loadMesh(const char* filename){
     glm::vec3 scale = {bbox[1][0] - bbox[0][0], bbox[1][1] - bbox[0][1], bbox[1][2] - bbox[0][2]};
     for (auto &vertex : Simplifier::vertices){
         vertex = vertex - bbox[0];
-        vertex = vertex / (scale);
+        vertex = vertex / (scale * 1.0001f);
     }
 
     Simplifier::output_folder = filename;
@@ -37,6 +37,7 @@ bool Simplifier::loadMesh(const char* filename){
 
 bool Simplifier::computeLODs(int numLODs){
     int maxOctreeDepth = 10;
+    int LODDepth = 9;
     OctreeNode root;
     root.bbox[0] = glm::vec3(0.0);
     root.bbox[1] = glm::vec3(1.0);
@@ -48,9 +49,41 @@ bool Simplifier::computeLODs(int numLODs){
     root.isLeaf = false;
     std::unordered_map<int, int> vertex_lookup;
     std::vector<glm::vec3> octree_vertices;
+    printf("[SIMPLIFIER] Done computing the Octree...\n");
+
+    // Compute fundamental error quadrics:
+    std::vector<Eigen::Matrix4f> error_metrics;
+    Eigen::Matrix4f K;
+
+    K << 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+    for(int i=0;i<Simplifier::vertices.size();i++){
+        error_metrics.push_back(K);
+    }
+
+    for(glm::ivec3 face : Simplifier::faces){
+        int v0 = face[0]; int v1 = face[1]; int v2 = face[2];
+        
+        glm::vec3 v01 = Simplifier::vertices[v1] - Simplifier::vertices[v0];
+        glm::vec3 v12 = Simplifier::vertices[v2] - Simplifier::vertices[v1];
+        glm::vec3 plane_normal = glm::cross(v01, v12);
+        plane_normal = glm::normalize(plane_normal);
+        float d = -glm::dot(plane_normal, Simplifier::vertices[v0]);
+        float a = plane_normal.x; float b = plane_normal.y; float c = plane_normal.z;
+        K << a*a, a*b, a*c, a*d,
+            a*b, b*b, b*c, b*d,
+            a*c, b*c, c*c, c*d,
+            a*d, b*d, c*d, d*d;
+        error_metrics[v0] += K;
+        error_metrics[v1] += K;
+        error_metrics[v2] += K;
+    }
+
+    printf("[SIMPLIFIER] Done computing error quadrics...\n");
 
     current_node_id = 0;
-    buildVertexLUT(&root, vertex_lookup, octree_vertices, 1, 9);
+    QEM_nodes = 0;
+    buildVertexLUT(&root, &vertex_lookup, &octree_vertices, 1, LODDepth, &(Simplifier::vertices), &(error_metrics));
+    printf("Nodes using QEM: %d (%.3f %%)\n", QEM_nodes, (float)QEM_nodes / Simplifier::vertices.size() * 100);
 
     vector<glm::ivec3> lod_faces;
 
@@ -69,7 +102,7 @@ bool Simplifier::computeLODs(int numLODs){
     // Rescale to original
     glm::vec3 scale = {bbox[1][0] - bbox[0][0], bbox[1][1] - bbox[0][1], bbox[1][2] - bbox[0][2]};
     for (auto &vertex : octree_vertices){
-        vertex = vertex * (scale);
+        vertex = vertex * (scale * 1.0001f);
         vertex = vertex + bbox[0];
         
     }

@@ -3,6 +3,7 @@
 
 
 #include "Scene.h"
+#include "TileMap.h"
 
 
 // Application is a singleton (a class with a single instance) that represents our whole app
@@ -22,7 +23,7 @@ public:
 		return G;
 	}
 	
-	void init();
+	void init(TileMap tilemap);
 	bool loadMesh(const char *filename);
 	bool update(int deltaTime);
 	void render();
