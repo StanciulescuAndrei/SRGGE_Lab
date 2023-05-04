@@ -10,15 +10,15 @@
 Scene::Scene()
 {
 	cube = NULL;
-	mesh = NULL;
 }
 
 Scene::~Scene()
 {
 	if(cube != NULL)
 		delete cube;
-	if(mesh != NULL)
+	for(TriangleMesh * mesh : objects){
 		delete mesh;
+	}
 }
 
 
@@ -46,16 +46,12 @@ bool Scene::loadMesh(const char *filename)
 	PLYReader reader;
 #pragma warning( pop ) 
 
-	if(mesh != NULL)
-	{
-		mesh->free();
-		delete mesh;
-	}
-	mesh = new TriangleMesh();
+	TriangleMesh * mesh = new TriangleMesh();
 	bool bSuccess = reader.readMesh(filename, *mesh);
 	if(bSuccess)
 	  mesh->sendToOpenGL(basicProgram);
 	
+	objects.push_back(mesh);
 	return bSuccess;
 }
 
@@ -75,22 +71,25 @@ void Scene::render(uint8_t num_instances)
  	
  	renderRoom();
  	
-	if(mesh != NULL)
+	if(objects.size() > 0)
 	{
-		
 		glm::mat4 modelView;
  		
 		for(int y = 0; y < tilemap.height; y++){
 			for(int x = 0; x < tilemap.width; x++){
-				bool moai = (tilemap.GetTile(x, y) > 0 && tilemap.GetTile(x, y) < 255);
-				if(moai){
-					basicProgram.setUniform4f("color", 0.75f, 0.15f, 0.65f, 1.0f);
-					modelView = camera.getModelViewMatrix();
-					modelView = glm::translate(modelView, glm::vec3(x * 1.0f, 0.0f, y * 1.0f));
-					basicProgram.setUniformMatrix4f("modelview", modelView);
-					normalMatrix = glm::inverseTranspose(camera.getModelViewMatrix());
-					basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
-					mesh->render();
+				bool statue = (tilemap.GetTile(x, y) > 0 && tilemap.GetTile(x, y) < 255);
+				if(statue){
+					for(int obj_id = 0;obj_id < objects.size();obj_id++){
+						if(object_codes[obj_id] == tilemap.GetTile(x, y)){
+							basicProgram.setUniform4f("color", 0.75f, 0.15f, 0.65f, 1.0f);
+							modelView = camera.getModelViewMatrix();
+							modelView = glm::translate(modelView, glm::vec3(x * 1.0f, 0.0f, y * 1.0f));
+							basicProgram.setUniformMatrix4f("modelview", modelView);
+							normalMatrix = glm::inverseTranspose(camera.getModelViewMatrix());
+							basicProgram.setUniformMatrix3f("normalMatrix", normalMatrix);
+							objects[obj_id]->render();
+						}
+					}
 				}
 			}	
 		}

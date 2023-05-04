@@ -11,7 +11,7 @@ void main()
 {
   // Transform matrix to viewspace
   normalFrag = normal;
-  //normalFrag = normalMatrix * normal;
+  normalFrag = normalize(normalMatrix * normal);
 	// Transform position from pixel coordinates to clipping coordinates
 	gl_Position = projection * modelview * vec4(position, 1.0);
 }

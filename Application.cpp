@@ -52,13 +52,13 @@ bool Application::update(int deltaTime)
 	if(bNavigation)
 	{
 		if(specialKeys[GLUT_KEY_UP] || keys['W'] || keys['w'])
-			scene.getCamera().moveForward(MOVEMENT_DELTA);
+			scene.getCamera().moveForward(MOVEMENT_DELTA * 45.0f / fps);
 		if(specialKeys[GLUT_KEY_DOWN] || keys['S'] || keys['s'])
-			scene.getCamera().moveForward(-MOVEMENT_DELTA);
+			scene.getCamera().moveForward(-MOVEMENT_DELTA * 45.0f / fps);
 		if(specialKeys[GLUT_KEY_RIGHT] || keys['D'] || keys['d'])
-			scene.getCamera().strafe(MOVEMENT_DELTA);
+			scene.getCamera().strafe(MOVEMENT_DELTA * 45.0f / fps);
 		if(specialKeys[GLUT_KEY_LEFT] || keys['A'] || keys['a'])
-			scene.getCamera().strafe(-MOVEMENT_DELTA);
+			scene.getCamera().strafe(-MOVEMENT_DELTA * 45.0f / fps);
 	}
 	
 	return bPlay;
@@ -75,7 +75,7 @@ void Application::render()
 		framecounter = 0;
 		start_time = end_time;
 		end_time = glutGet(GLUT_ELAPSED_TIME);
-		float fps = 1000.0f * FPS_INTERVAL / (end_time - start_time);
+		fps = 1000.0f * FPS_INTERVAL / (end_time - start_time);
 		printf("FPS : %3.1f\n", fps);
 	}
 

@@ -12,8 +12,7 @@ bool PLYReader::readMesh(const string &filename, TriangleMesh &mesh)
 {
 	ifstream fin;
 	int nVertices, nFaces;
-
-	fin.open(filename.c_str(), ios_base::in | ios_base::binary);
+	fin.open(filename.c_str(), ios_base::in);
 	if(!fin.is_open())
 		return false;
 	if(!loadHeader(fin, nVertices, nFaces))
@@ -49,8 +48,8 @@ bool PLYReader::readSimplified(const string &filename, vector<float> &vertices, 
 		return false;
 	}
 
-	loadVertices(fin, nVertices, vertices);
-	loadFaces(fin, nFaces, faces);
+	loadVertices_binary(fin, nVertices, vertices);
+	loadFaces_binary(fin, nFaces, faces);
 	fin.close();
 
 	return true;
@@ -97,6 +96,73 @@ void PLYReader::loadVertices(ifstream &fin, int nVertices, vector<float> &plyVer
 	float value;
 
 	plyVertices.resize(3*nVertices);
+	// For binary:
+	// for(i=0; i<nVertices; i++)
+	// {
+	// 	fin.read((char *)&value, sizeof(float));
+	// 	plyVertices[3*i] = value;
+	// 	fin.read((char *)&value, sizeof(float));
+	// 	plyVertices[3*i+1] = value;
+	// 	fin.read((char *)&value, sizeof(float));
+	// 	plyVertices[3*i+2] = value;
+	// }
+
+	// For ascii:
+	for(i=0; i<nVertices; i++)
+	{
+		fin >> plyVertices[3*i] >> plyVertices[3*i + 1] >> plyVertices[3*i + 2];
+	}
+}
+
+// Same thing for the faces. Those with more than three sides
+// are subdivided into triangles.
+
+void PLYReader::loadFaces(ifstream &fin, int nFaces, vector<int> &plyTriangles)
+{
+	int i, tri[3];
+	unsigned char nVrtxPerFace;
+
+	plyTriangles.reserve(nFaces);
+	// For binary:
+	// for(i=0; i<nFaces; i++)
+	// {
+	// 	fin.read((char *)&nVrtxPerFace, sizeof(unsigned char));
+	// 	fin.read((char *)&tri[0], sizeof(int));
+	// 	fin.read((char *)&tri[1], sizeof(int));
+	// 	fin.read((char *)&tri[2], sizeof(int));
+	// 	plyTriangles.push_back(tri[0]);
+	// 	plyTriangles.push_back(tri[1]);
+	// 	plyTriangles.push_back(tri[2]);
+	// 	for(; nVrtxPerFace>3; nVrtxPerFace--)
+	// 	{
+	// 		tri[1] = tri[2];
+	// 		fin.read((char *)&tri[2], sizeof(int));
+	// 		plyTriangles.push_back(tri[0]);
+	// 		plyTriangles.push_back(tri[1]);
+	// 		plyTriangles.push_back(tri[2]);
+	// 	}
+	// }
+	// For ascii:
+	for(i=0; i<nFaces; i++)
+	{
+		fin >> nVrtxPerFace;
+		fin >> tri[0];
+		fin >> tri[1];
+		fin >> tri[2];
+		plyTriangles.push_back(tri[0]);
+		plyTriangles.push_back(tri[1]);
+		plyTriangles.push_back(tri[2]);
+	}
+
+}
+
+void PLYReader::loadVertices_binary(ifstream &fin, int nVertices, vector<float> &plyVertices)
+{
+	int i;
+	float value;
+
+	plyVertices.resize(3*nVertices);
+	// For binary:
 	for(i=0; i<nVertices; i++)
 	{
 		fin.read((char *)&value, sizeof(float));
@@ -111,12 +177,13 @@ void PLYReader::loadVertices(ifstream &fin, int nVertices, vector<float> &plyVer
 // Same thing for the faces. Those with more than three sides
 // are subdivided into triangles.
 
-void PLYReader::loadFaces(ifstream &fin, int nFaces, vector<int> &plyTriangles)
+void PLYReader::loadFaces_binary(ifstream &fin, int nFaces, vector<int> &plyTriangles)
 {
 	int i, tri[3];
 	unsigned char nVrtxPerFace;
 
 	plyTriangles.reserve(nFaces);
+	// For binary:
 	for(i=0; i<nFaces; i++)
 	{
 		fin.read((char *)&nVrtxPerFace, sizeof(unsigned char));
@@ -135,6 +202,7 @@ void PLYReader::loadFaces(ifstream &fin, int nFaces, vector<int> &plyTriangles)
 			plyTriangles.push_back(tri[2]);
 		}
 	}
+
 }
 
 // Rescales the model to fit a box of 1x1x1 centered at the origin

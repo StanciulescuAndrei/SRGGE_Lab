@@ -57,7 +57,8 @@ private:
 	int32_t start_time = 0;
 	int32_t end_time = 0;
 	int16_t framecounter = 0; 
-	int16_t num_instances = 1;                                 
+	int16_t num_instances = 1;        
+	float fps = 60.0f;                         
 };
 
 

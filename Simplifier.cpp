@@ -36,7 +36,7 @@ bool Simplifier::loadMesh(const char* filename){
 }
 
 bool Simplifier::computeLODs(int numLODs){
-    int maxOctreeDepth = 10;
+    int maxOctreeDepth = 9;
     int LODDepth = 9;
     OctreeNode root;
     root.bbox[0] = glm::vec3(0.0);

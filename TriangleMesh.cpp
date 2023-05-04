@@ -78,19 +78,19 @@ void TriangleMesh::sendToOpenGL(ShaderProgram &program)
 	{
 	  glm::vec3 normal;
 	  
-	  normal = glm::cross(vertices[triangles[tri+1]] - vertices[triangles[tri]], 
-	                      vertices[triangles[tri+2]] - vertices[triangles[tri]]);
-    normal = glm::normalize(normal);
-    for(unsigned int vrtx=0; vrtx<3; vrtx++)
-    {
-      data.push_back(vertices[triangles[tri + vrtx]].x);
-      data.push_back(vertices[triangles[tri + vrtx]].y);
-      data.push_back(vertices[triangles[tri + vrtx]].z);
+	  	normal = glm::cross(vertices[triangles[tri+1]] - vertices[triangles[tri]], 
+	                        vertices[triangles[tri+2]] - vertices[triangles[tri]]);
+		normal = glm::normalize(normal);
+		for(unsigned int vrtx=0; vrtx<3; vrtx++)
+		{
+			data.push_back(vertices[triangles[tri + vrtx]].x);
+			data.push_back(vertices[triangles[tri + vrtx]].y);
+			data.push_back(vertices[triangles[tri + vrtx]].z);
 
-      data.push_back(normal.x);
-      data.push_back(normal.y);
-      data.push_back(normal.z);
-    }
+			data.push_back(normal.x);
+			data.push_back(normal.y);
+			data.push_back(normal.z);
+		}
 	}
 
   // Send data to OpenGL

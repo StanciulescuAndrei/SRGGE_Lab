@@ -69,16 +69,19 @@ void buildVertexLUT(OctreeNode* node, std::unordered_map<int, int>* lut, std::ve
             Qbar += error_metrics->at(v);
             center += vertices->at(v);
         }
-        Qbar(3, 0) = 0.0f; Qbar(3, 1) = 0.0f; Qbar(3, 2) = 0.0f; Qbar(3, 3) = 1.0f; 
         center /= node->verts_id.size();
-        if(std::abs(Qbar.determinant()) > 0.001){
-            Eigen::Vector4f best_pos = Qbar.inverse() * Eigen::Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
-            octree_vertices->push_back(glm::vec3(best_pos(0), best_pos(1), best_pos(2)));
-            QEM_nodes+=1;
-        }
-        else{
-            octree_vertices->push_back(center);
-        }
+        // Qbar(3, 0) = 0.0f; Qbar(3, 1) = 0.0f; Qbar(3, 2) = 0.0f; Qbar(3, 3) = 1.0f; 
+        // 
+        // if(std::abs(Qbar.determinant()) > 0.001){
+        //     Eigen::Vector4f best_pos = Qbar.inverse() * Eigen::Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
+        //     octree_vertices->push_back(glm::vec3(best_pos(0), best_pos(1), best_pos(2)));
+        //     QEM_nodes+=1;
+        // }
+        // else{
+        //     octree_vertices->push_back(center);
+        // }
+
+        octree_vertices->push_back(center);
 
         for(auto v : node->verts_id){
             (*lut)[v] = current_node_id;

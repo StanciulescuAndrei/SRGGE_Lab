@@ -7,6 +7,7 @@
 #include "ShaderProgram.h"
 #include "TriangleMesh.h"
 #include "TileMap.h"
+#include <vector>
 
 
 // Scene contains all the entities of our game.
@@ -36,11 +37,12 @@ private:
 
 private:
   VectorCamera camera;
-	TriangleMesh *cube, *mesh;
+	TriangleMesh *cube;
+	std::vector<TriangleMesh *> objects;
 	ShaderProgram basicProgram;
 	TileMap tilemap;
 	float currentTime;
-
+	uint8_t object_codes[5] = {38, 59, 82, 106, 132};
 };
 
 

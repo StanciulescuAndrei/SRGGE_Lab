@@ -411,9 +411,14 @@ help:
 .PHONY : help
 
 run: all
-	__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia ./BaseCode ../../models/moai.ply
+	__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia ./BaseCode
 
-
+simplify: all
+	./BaseCode simplify ../../models/moai.ply
+	./BaseCode simplify ../../models/dragon.ply
+	./BaseCode simplify ../../models/frog.ply
+	./BaseCode simplify ../../models/Armadillo.ply
+	./BaseCode simplify ../../models/lucy.ply
 
 #=============================================================================
 # Special targets to cleanup operation of make.
