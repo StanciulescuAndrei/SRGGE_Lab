@@ -152,11 +152,11 @@ int main(int argc, char **argv)
 	// Application instance initialization
 	Application::instance().init(map);
 	if(argc == 1){
-		Application::instance().loadMesh("../../models/moai_LOD.ply");
-		Application::instance().loadMesh("../../models/dragon_LOD.ply");
-		Application::instance().loadMesh("../../models/frog_LOD.ply");
-		Application::instance().loadMesh("../../models/Armadillo_LOD.ply");
-		Application::instance().loadMesh("../../models/lucy_LOD.ply");
+		Application::instance().loadMesh("../../models/moai_LOD6.ply");
+		Application::instance().loadMesh("../../models/dragon_LOD6.ply");
+		Application::instance().loadMesh("../../models/frog_LOD6.ply");
+		Application::instance().loadMesh("../../models/Armadillo_LOD6.ply");
+		Application::instance().loadMesh("../../models/lucy_LOD6.ply");
 	}
 	else if(argc == 2){
 	  Application::instance().loadMesh(argv[1]);

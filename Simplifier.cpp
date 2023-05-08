@@ -37,6 +37,7 @@ bool Simplifier::loadMesh(const char* filename){
 
 bool Simplifier::computeLODs(int numLODs){
     int maxOctreeDepth = 9;
+    std::vector<int> LODs = {6, 7, 9}; // 6, 7, 9
     int LODDepth = 9;
     OctreeNode root;
     root.bbox[0] = glm::vec3(0.0);
@@ -78,37 +79,51 @@ bool Simplifier::computeLODs(int numLODs){
         error_metrics[v2] += K;
     }
 
+    // Check that the quadrics are good, the error should be ~ 0
+    Eigen::Vector4f ve;
+    for(int i=0;i<Simplifier::vertices.size();i++){ // Simplifier::vertices.size()
+        glm::vec4 v = glm::vec4(Simplifier::vertices[i], 1.0f);
+        ve(0) = v[0]; ve(1) = v[1]; ve(2) = v[2]; ve(3) = v[3];
+        float err = ve.transpose() * error_metrics[i] * ve;
+        if(std::abs(err) > 1e-5)
+            std::cout<<i<<" "<<err<<std::endl;
+    }
+    
+
     printf("[SIMPLIFIER] Done computing error quadrics...\n");
 
-    current_node_id = 0;
-    QEM_nodes = 0;
-    buildVertexLUT(&root, &vertex_lookup, &octree_vertices, 1, LODDepth, &(Simplifier::vertices), &(error_metrics));
-    printf("Nodes using QEM: %d (%.3f %%)\n", QEM_nodes, (float)QEM_nodes / Simplifier::vertices.size() * 100);
+    for(auto LOD : LODs){
+        current_node_id = 0;
+        QEM_nodes = 0;
+        buildVertexLUT(&root, &vertex_lookup, &octree_vertices, 1, LOD, &(Simplifier::vertices), &(error_metrics));
+        printf("Nodes using QEM: %d (%.3f %%)\n", QEM_nodes, (float)QEM_nodes / current_node_id * 100);
 
-    vector<glm::ivec3> lod_faces;
+        vector<glm::ivec3> lod_faces;
 
-    for(glm::ivec3 face : Simplifier::faces){
-        int v0 = face[0]; int v1 = face[1]; int v2 = face[2];
-        int tv0 = vertex_lookup[v0]; int tv1 = vertex_lookup[v1]; int tv2 = vertex_lookup[v2];
+        for(glm::ivec3 face : Simplifier::faces){
+            int v0 = face[0]; int v1 = face[1]; int v2 = face[2];
+            int tv0 = vertex_lookup[v0]; int tv1 = vertex_lookup[v1]; int tv2 = vertex_lookup[v2];
 
-        if(tv0 == tv1 || tv1 == tv2 || tv0 == tv2){
-            continue;
-            // Discard triangle as it has become degenerate
+            if(tv0 == tv1 || tv1 == tv2 || tv0 == tv2){
+                continue;
+                // Discard triangle as it has become degenerate
+            }
+
+            lod_faces.push_back({tv0, tv1, tv2});
         }
 
-        lod_faces.push_back({tv0, tv1, tv2});
-    }
+        // Rescale to original
+        glm::vec3 scale = {bbox[1][0] - bbox[0][0], bbox[1][1] - bbox[0][1], bbox[1][2] - bbox[0][2]};
+        for (auto &vertex : octree_vertices){
+            vertex = vertex * (scale * 1.0001f);
+            vertex = vertex + bbox[0];
+            
+        }
 
-    // Rescale to original
-    glm::vec3 scale = {bbox[1][0] - bbox[0][0], bbox[1][1] - bbox[0][1], bbox[1][2] - bbox[0][2]};
-    for (auto &vertex : octree_vertices){
-        vertex = vertex * (scale * 1.0001f);
-        vertex = vertex + bbox[0];
-        
+        printf("Writing simplified mesh...\n");
+        writeSimplifications(octree_vertices, lod_faces, LOD);
     }
-
-    printf("Writing simplified mesh...\n");
-    writeSimplifications(octree_vertices, lod_faces, 0);
+    
     
 
 
@@ -118,7 +133,7 @@ bool Simplifier::computeLODs(int numLODs){
 bool Simplifier::writeSimplifications(std::vector<glm::vec3> vertices, std::vector<glm::ivec3> faces, int level){
     filesystem::path p(Simplifier::output_folder);
     string fpath = p.parent_path().string() + "/" + 
-                   p.stem().string() + "_LOD"+
+                   p.stem().string() + "_LOD"+ std::to_string(level) + 
                    p.extension().string();
     std::cout << "Writing verts/faces to '" << fpath << "'..." << std::endl;
     int numVerts = vertices.size();
