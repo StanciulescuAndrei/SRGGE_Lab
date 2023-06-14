@@ -486,7 +486,49 @@ CMakeFiles/BaseCode.dir/Application.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
-  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/TileMap.h
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/TileMap.h \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/RenderableEntity.h \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Visibility.h \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
+  /usr/include/c++/11/bits/stl_heap.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/uniform_int_dist.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/c++/11/pstl/execution_defs.h \
+  /usr/include/c++/11/random \
+  /usr/include/c++/11/bits/random.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
+  /usr/include/c++/11/bits/random.tcc \
+  /usr/include/c++/11/numeric \
+  /usr/include/c++/11/bits/stl_numeric.h \
+  /usr/include/c++/11/bit \
+  /usr/include/c++/11/pstl/glue_numeric_defs.h \
+  /usr/include/c++/11/math.h
 
 CMakeFiles/BaseCode.dir/Octree.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Octree.cpp \
   /usr/include/stdc-predef.h \
@@ -1858,6 +1900,11 @@ CMakeFiles/BaseCode.dir/Scene.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/Base
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -2132,6 +2179,36 @@ CMakeFiles/BaseCode.dir/Scene.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/Base
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/gtc/matrix_inverse.hpp \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/setup.hpp \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/gtc/matrix_inverse.inl \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
+  /usr/include/c++/11/bits/stl_heap.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/uniform_int_dist.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc \
+  /usr/include/c++/11/pstl/execution_defs.h \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Scene.h \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/glm.hpp \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/_fixes.hpp \
@@ -2166,18 +2243,9 @@ CMakeFiles/BaseCode.dir/Scene.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/Base
   /usr/include/GL/gl.h \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Shader.h \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/TriangleMesh.h \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_uninitialized.h \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/TileMap.h \
-  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.h \
-  /usr/include/c++/11/fstream \
-  /usr/include/c++/11/bits/codecvt.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
-  /usr/include/c++/11/bits/fstream.tcc
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/RenderableEntity.h \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.h
 
 CMakeFiles/BaseCode.dir/Shader.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Shader.cpp \
   /usr/include/stdc-predef.h \
@@ -4962,7 +5030,7 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/TileMap.h \
-  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Simplifier.h \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/RenderableEntity.h \
   /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.h \
   /usr/include/c++/11/fstream \
   /usr/include/c++/11/istream \
@@ -4997,27 +5065,49 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  /usr/include/c++/11/queue \
-  /usr/include/c++/11/deque \
-  /usr/include/c++/11/bits/stl_deque.h \
-  /usr/include/c++/11/bits/deque.tcc \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Visibility.h \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
   /usr/include/c++/11/bits/stl_heap.h \
-  /usr/include/c++/11/bits/stl_queue.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/uniform_int_dist.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/array \
   /usr/include/c++/11/bits/uses_allocator.h \
-  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Octree.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/std_function.h \
   /usr/include/c++/11/unordered_map \
   /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/bits/hashtable.h \
   /usr/include/c++/11/bits/hashtable_policy.h \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/enable_special_members.h \
   /usr/include/c++/11/bits/node_handle.h \
   /usr/include/c++/11/bits/unordered_map.h \
   /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/c++/11/pstl/execution_defs.h \
+  /usr/include/c++/11/random \
+  /usr/include/c++/11/bits/random.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
+  /usr/include/c++/11/bits/random.tcc \
+  /usr/include/c++/11/numeric \
+  /usr/include/c++/11/bits/stl_numeric.h \
+  /usr/include/c++/11/bit \
+  /usr/include/c++/11/pstl/glue_numeric_defs.h \
+  /usr/include/c++/11/math.h \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Simplifier.h \
+  /usr/include/c++/11/queue \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/bits/stl_queue.h \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Octree.h \
   /usr/local/include/eigen3/Eigen/Dense \
   /usr/local/include/eigen3/Eigen/Core \
   /usr/local/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -5027,16 +5117,6 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   /usr/local/include/eigen3/Eigen/src/Core/util/MKL_support.h \
-  /usr/include/c++/11/functional \
-  /usr/include/c++/11/bits/refwrap.h \
-  /usr/include/c++/11/bits/std_function.h \
-  /usr/include/c++/11/bits/stl_algo.h \
-  /usr/include/c++/11/bits/algorithmfwd.h \
-  /usr/include/c++/11/bits/stl_tempbuf.h \
-  /usr/include/c++/11/bits/uniform_int_dist.h \
-  /usr/include/c++/11/algorithm \
-  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
-  /usr/include/c++/11/pstl/execution_defs.h \
   /usr/local/include/eigen3/Eigen/src/Core/util/Constants.h \
   /usr/local/include/eigen3/Eigen/src/Core/util/Meta.h \
   /usr/local/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
@@ -5224,9 +5304,31 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
   /usr/local/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   /usr/local/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
   /usr/local/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
-  /usr/include/c++/11/iostream \
-  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/stb_image.h \
-  /usr/include/c++/11/math.h
+  /usr/include/c++/11/filesystem \
+  /usr/include/c++/11/bits/fs_fwd.h \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/ctime \
+  /usr/include/c++/11/bits/parse_numbers.h \
+  /usr/include/c++/11/bits/fs_path.h \
+  /usr/include/c++/11/locale \
+  /usr/include/c++/11/bits/locale_facets_nonio.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/11/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/11/bits/locale_conv.h \
+  /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/iomanip \
+  /usr/include/c++/11/bits/quoted_string.h \
+  /usr/include/c++/11/codecvt \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/fs_dir.h \
+  /usr/include/c++/11/bits/fs_ops.h \
+  /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/stb_image.h
 
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/main.cpp:
@@ -5310,14 +5412,6 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/gtc/constants.hpp:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/gtc/matrix_transform.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
-
-/usr/include/c++/11/bits/codecvt.h:
-
-/usr/include/c++/11/fstream:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.h:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.cpp:
 
@@ -5553,13 +5647,29 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/local/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h:
 
-/usr/include/c++/11/bits/fstream.tcc:
-
-/usr/local/include/eigen3/Eigen/src/Core/IO.h:
-
 /usr/local/include/eigen3/Eigen/src/Core/util/ReshapedHelper.h:
 
 /usr/local/include/eigen3/Eigen/src/Core/functors/StlFunctors.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h:
+
+/usr/include/c++/11/bits/locale_conv.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/arch/Default/TypeCasting.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/arch/Default/Half.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/GenericPacketMath.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
@@ -5663,6 +5773,10 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
+/usr/local/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h:
+
+/usr/include/c++/11/cassert:
+
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
 /usr/include/c++/11/cstring:
@@ -5683,7 +5797,11 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/include/c++/11/bits/basic_ios.tcc:
 
+/usr/include/c++/11/bits/codecvt.h:
+
 /usr/include/c++/11/bits/enable_special_members.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
 
@@ -5708,12 +5826,6 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/mat2x4.hpp:
 
 /usr/include/string.h:
-
-/usr/local/include/eigen3/Eigen/src/Core/GenericPacketMath.h:
-
-/usr/include/c++/11/cassert:
-
-/usr/local/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/vector_int2.hpp:
 
@@ -5774,6 +5886,8 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 /usr/include/c++/11/deque:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/vector_float2_precision.hpp:
+
+/usr/include/c++/11/numeric:
 
 /usr/include/c++/11/cwctype:
 
@@ -5887,6 +6001,10 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/mat3x4.hpp:
 
+/usr/local/include/eigen3/Eigen/src/Core/MathFunctions.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
 /usr/include/c++/11/cstddef:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
@@ -5933,11 +6051,7 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
-/usr/local/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h:
-
 /usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/local/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h:
 
 /usr/include/c++/11/bits/functexcept.h:
 
@@ -6205,6 +6319,12 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/include/locale.h:
 
+/usr/local/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/matrix_double4x2.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
@@ -6212,6 +6332,8 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 /usr/include/GL/glew.h:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/matrix_float4x3.hpp:
+
+/usr/include/c++/11/pstl/glue_numeric_defs.h:
 
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
 
@@ -6309,6 +6431,8 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/vector_int3.hpp:
 
+/usr/include/c++/11/bit:
+
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/vector_uint3_precision.hpp:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/vec4.hpp:
@@ -6320,6 +6444,8 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/type_vec4.hpp:
 
 /usr/include/c++/11/bits/atomic_base.h:
+
+/usr/include/c++/11/bits/random.tcc:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/vector_bool4_precision.hpp:
 
@@ -6392,6 +6518,12 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 /usr/include/c++/11/tr1/gamma.tcc:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/type_mat3x2.hpp:
+
+/usr/local/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/mat2x3.hpp:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/matrix_double3x2_precision.hpp:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/integer.hpp:
 
@@ -6471,10 +6603,6 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/type_mat4x4.inl:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/type_mat4x4_simd.inl:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
@@ -6483,23 +6611,11 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h:
 
-/usr/local/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h:
-
-/usr/include/c++/11/math.h:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/func_geometric_simd.inl:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/func_matrix.inl:
-
 /usr/local/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h:
 
 /usr/local/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/geometric.hpp:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/vector_double3.hpp:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/func_geometric.inl:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/exponential.hpp:
 
@@ -6507,13 +6623,7 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h:
 
-/usr/local/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h:
-
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/func_vector_relational.inl:
-
-/usr/include/c++/11/bits/locale_conv.h:
-
-/usr/local/include/eigen3/Eigen/src/Core/arch/Default/TypeCasting.h:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/func_vector_relational_simd.inl:
 
@@ -6540,6 +6650,12 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/vector_double3.hpp:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/func_geometric.inl:
+
+/usr/include/c++/11/random:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h:
 
@@ -6699,11 +6815,17 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h:
 
+/usr/include/c++/11/bits/stl_numeric.h:
+
 /usr/include/c++/11/bits/std_abs.h:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/simd/geometric.h:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/simd/matrix.h:
+
+/usr/local/include/eigen3/Eigen/src/Core/IO.h:
+
+/usr/include/c++/11/bits/fstream.tcc:
 
 /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/vector_relational.hpp:
 
@@ -6749,7 +6871,37 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/include/c++/11/vector:
 
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/PLYReader.h:
+
 /usr/include/c++/11/bits/stl_uninitialized.h:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/RenderableEntity.h:
+
+/usr/include/c++/11/fstream:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/type_mat4x4_simd.inl:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Visibility.h:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Simplifier.cpp:
+
+/usr/include/c++/11/algorithm:
+
+/usr/include/c++/11/bits/stl_tempbuf.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/c++/11/bits/std_function.h:
+
+/usr/include/c++/11/bits/uses_allocator.h:
+
+/usr/include/c++/11/bits/invoke.h:
+
+/usr/include/c++/11/bits/refwrap.h:
 
 /usr/include/c++/11/unordered_map:
 
@@ -6757,25 +6909,17 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 
 /usr/include/c++/11/bits/hashtable_policy.h:
 
-/usr/include/c++/11/bits/uses_allocator.h:
+/usr/include/c++/11/bits/random.h:
 
-/usr/include/c++/11/bits/invoke.h:
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/func_geometric_simd.inl:
+
+/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/detail/func_matrix.inl:
+
+/usr/include/c++/11/math.h:
 
 /usr/local/include/eigen3/Eigen/src/Core/util/Macros.h:
 
 /usr/local/include/eigen3/Eigen/src/Core/util/MKL_support.h:
-
-/usr/include/c++/11/bits/refwrap.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
-/usr/include/c++/11/bits/std_function.h:
-
-/usr/include/c++/11/bits/stl_tempbuf.h:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/Simplifier.cpp:
-
-/usr/include/c++/11/algorithm:
 
 /usr/local/include/eigen3/Eigen/src/Core/util/Constants.h:
 
@@ -6794,25 +6938,3 @@ CMakeFiles/BaseCode.dir/main.cpp.o: /home/stanciu/Documents/UPC/SRGGE/Lab1/BaseC
 /usr/local/include/eigen3/Eigen/src/Core/util/Memory.h:
 
 /usr/local/include/eigen3/Eigen/src/Core/util/SymbolicIndex.h:
-
-/usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/usr/local/include/eigen3/Eigen/src/Core/MathFunctions.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/matrix_double4x2.hpp:
-
-/usr/local/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h:
-
-/usr/local/include/eigen3/Eigen/src/Core/arch/Default/Half.h:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/mat2x3.hpp:
-
-/home/stanciu/Documents/UPC/SRGGE/Lab1/BaseCode/glm/glm/ext/matrix_double3x2_precision.hpp:
-
-/usr/local/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h:
-
-/usr/local/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h:
-
-/usr/local/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h:

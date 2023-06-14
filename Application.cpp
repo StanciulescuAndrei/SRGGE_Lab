@@ -2,44 +2,50 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include "Application.h"
-
+#include <glm/glm.hpp>
 
 #define MOVEMENT_DELTA 0.035f
 #define ROTATION_DELTA_HEAD 0.15f
 #define ROTATION_DELTA_PITCH 0.15f
 #define FPS_INTERVAL 100
 
-
 // Initialize GL and the attributes of Application
 
-void Application::init(TileMap tilemap)
+void Application::init(TileMap _tilemap, bool computeViz)
 {
 	bPlay = true;
-	glClearColor(1.f, 1.f, 1.f, 1.0f); 		// Background = white color
+	glClearColor(1.f, 1.f, 1.f, 1.0f); // Background = white color
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	// Initialize the scene object
-	scene.init(tilemap);
-	
+	tilemap = _tilemap;
+
 	// State attributes needed to track keyboard & mouse
-	for(unsigned int i=0; i<256; i++)
+	for (unsigned int i = 0; i < 256; i++)
 	{
-	  keys[i] = false;
-	  specialKeys[i] = false;
+		keys[i] = false;
+		specialKeys[i] = false;
 	}
 	mouseButtons[0] = false;
 	mouseButtons[1] = false;
 	bNavigation = false;
-	
+
 	previousMousePos = glm::ivec2(glutGet(GLUT_WINDOW_WIDTH) / 2, glutGet(GLUT_WINDOW_HEIGHT) / 2);
 	glutWarpPointer(previousMousePos.x, previousMousePos.y);
+
+	if(computeViz){
+		Visibility vis;
+		vis.computeVisibility("../../map/visibility.txt", tilemap);
+	}
+
+	scene.init(tilemap);
 }
 
 // Load the mesh into the scene
 
-bool Application::loadMesh(const char *filename)
+bool Application::loadMesh(const char *filename, uint8_t id)
 {
-  return scene.loadMesh(filename);
+	return scene.loadMesh(filename, id);
 }
 
 // Update any animations or state in the scene
@@ -48,19 +54,19 @@ bool Application::loadMesh(const char *filename)
 bool Application::update(int deltaTime)
 {
 	scene.update(deltaTime);
-	
-	if(bNavigation)
+
+	if (bNavigation)
 	{
-		if(specialKeys[GLUT_KEY_UP] || keys['W'] || keys['w'])
+		if (specialKeys[GLUT_KEY_UP] || keys['W'] || keys['w'])
 			scene.getCamera().moveForward(MOVEMENT_DELTA * 45.0f / fps);
-		if(specialKeys[GLUT_KEY_DOWN] || keys['S'] || keys['s'])
+		if (specialKeys[GLUT_KEY_DOWN] || keys['S'] || keys['s'])
 			scene.getCamera().moveForward(-MOVEMENT_DELTA * 45.0f / fps);
-		if(specialKeys[GLUT_KEY_RIGHT] || keys['D'] || keys['d'])
+		if (specialKeys[GLUT_KEY_RIGHT] || keys['D'] || keys['d'])
 			scene.getCamera().strafe(MOVEMENT_DELTA * 45.0f / fps);
-		if(specialKeys[GLUT_KEY_LEFT] || keys['A'] || keys['a'])
+		if (specialKeys[GLUT_KEY_LEFT] || keys['A'] || keys['a'])
 			scene.getCamera().strafe(-MOVEMENT_DELTA * 45.0f / fps);
 	}
-	
+
 	return bPlay;
 }
 
@@ -71,7 +77,8 @@ void Application::render()
 {
 	// Let's see if we need to time anything
 	framecounter++;
-	if(framecounter == FPS_INTERVAL){
+	if (framecounter == FPS_INTERVAL)
+	{
 		framecounter = 0;
 		start_time = end_time;
 		end_time = glutGet(GLUT_ELAPSED_TIME);
@@ -79,37 +86,36 @@ void Application::render()
 		printf("FPS : %3.1f\n", fps);
 	}
 
-
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	scene.render(num_instances);
-	
-	if(bNavigation)
+
+	if (bNavigation)
 	{
 		previousMousePos = glm::ivec2(glutGet(GLUT_WINDOW_WIDTH) / 2, glutGet(GLUT_WINDOW_HEIGHT) / 2);
 		glutWarpPointer(previousMousePos.x, previousMousePos.y);
 	}
-
-
 }
+
 
 // Resizing the window should change the size GL viewport
 // as well as adapt the camera to the new aspect ratio
 
 void Application::resize(int width, int height)
 {
-  glViewport(0, 0, width, height);
-  scene.getCamera().resizeCameraViewport(width, height);
+	glViewport(0, 0, width, height);
+	scene.getCamera().resizeCameraViewport(width, height);
 }
 
 // Process keyboard events. Escape exits the application
 
 void Application::keyPressed(int key)
 {
-	if(key >= 0x31 && key <= 0x39){
+	if (key >= 0x31 && key <= 0x39)
+	{
 		num_instances = key - 0x30;
 	}
-	
-	if(key == 27) // Escape code
+
+	if (key == 27) // Escape code
 		bPlay = false;
 	keys[key] = true;
 }
@@ -130,10 +136,10 @@ void Application::specialKeyPressed(int key)
 void Application::specialKeyReleased(int key)
 {
 	specialKeys[key] = false;
-	if(key == GLUT_KEY_F1)
+	if (key == GLUT_KEY_F1)
 	{
 		bNavigation = !bNavigation;
-		if(bNavigation)
+		if (bNavigation)
 		{
 			previousMousePos = glm::ivec2(glutGet(GLUT_WINDOW_WIDTH) / 2, glutGet(GLUT_WINDOW_HEIGHT) / 2);
 			glutWarpPointer(previousMousePos.x, previousMousePos.y);
@@ -142,10 +148,10 @@ void Application::specialKeyReleased(int key)
 		else
 			glutSetCursor(GLUT_CURSOR_INHERIT);
 	}
-	if(key == GLUT_KEY_F5)
+	if (key == GLUT_KEY_F5)
 	{
 		bFullscreen = !bFullscreen;
-		if(bFullscreen)
+		if (bFullscreen)
 		{
 			windowSize = glm::ivec2(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
 			glutFullScreen();
@@ -159,14 +165,14 @@ void Application::specialKeyReleased(int key)
 
 void Application::mouseMove(int x, int y)
 {
-	if(bNavigation)
+	if (bNavigation)
 	{
 		glm::ivec2 move = glm::ivec2(previousMousePos.x - x, y - previousMousePos.y);
-		if((move.x != 0) || (move.y != 0))
+		if ((move.x != 0) || (move.y != 0))
 		{
-			if(move.x != 0)
+			if (move.x != 0)
 				scene.getCamera().rotateCamera(ROTATION_DELTA_HEAD * move.x);
-			if(move.y != 0)
+			if (move.y != 0)
 				scene.getCamera().changePitch(ROTATION_DELTA_PITCH * move.y);
 			previousMousePos = glm::ivec2(x, y);
 		}
@@ -177,12 +183,12 @@ void Application::mouseMove(int x, int y)
 
 void Application::mousePress(int button)
 {
-  mouseButtons[button] = true;
+	mouseButtons[button] = true;
 }
 
 void Application::mouseRelease(int button)
 {
-  mouseButtons[button] = false;
+	mouseButtons[button] = false;
 }
 
 // Return a given key state
@@ -196,8 +202,3 @@ bool Application::getSpecialKey(int key) const
 {
 	return specialKeys[key];
 }
-
-
-
-
-

@@ -60,11 +60,10 @@ void buildVertexLUT(OctreeNode* node, std::unordered_map<int, int>* lut, std::ve
         }
     }
     else if(crt_depth == max_depth){
-        if(node->verts_id.size() == 0)
-            return;
+        
         // Here we compute the QEM to determine the representative
         Eigen::Matrix4f Qbar;
-        Qbar << 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+        Qbar << 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f;
         glm::vec3 center(0.0f, 0.0f, 0.0f);
         for(auto v : node->verts_id){
             Qbar += error_metrics->at(v);
@@ -72,9 +71,9 @@ void buildVertexLUT(OctreeNode* node, std::unordered_map<int, int>* lut, std::ve
         }
         center /= node->verts_id.size();
         Qbar(3, 0) = 0.0f; Qbar(3, 1) = 0.0f; Qbar(3, 2) = 0.0f; Qbar(3, 3) = 1.0f; 
-        
-        if(std::abs(Qbar.determinant()) > 0.000001){
-            Eigen::Vector4f best_pos = Qbar.inverse() * Eigen::Vector4f(0.0f, 0.0f, 0.0f, 1.0f);
+        Eigen::Vector4f best_pos;
+        if(glm::abs(Qbar.determinant()) > 1e-3){ //glm::abs(Qbar.determinant()) > 1e-3
+            best_pos = Qbar.colPivHouseholderQr().solve(Eigen::Vector4f(0.0f, 0.0f, 0.0f, 1.0f));
             octree_vertices->push_back(glm::vec3(best_pos(0), best_pos(1), best_pos(2)));
             QEM_nodes+=1;
         }

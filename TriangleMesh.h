@@ -16,7 +16,6 @@ using namespace std;
 // TriangleMesh also manages the ids of the copy in the GPU, so as to 
 // be able to render it using OpenGL.
 
-
 class TriangleMesh
 {
 
@@ -35,6 +34,8 @@ public:
 	void sendToOpenGL(ShaderProgram &program);
 	void render() const;
 	void free();
+
+	uint32_t getTriangleCount();
 
 private:
   vector<glm::vec3> vertices;

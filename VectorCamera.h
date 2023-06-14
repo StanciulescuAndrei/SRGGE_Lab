@@ -23,14 +23,13 @@ public:
   void changePitch(float rotation);
   void moveForward(float distance);
   void strafe(float distance);
+  void computeModelViewMatrix();
+
+  void setPosition(float x, float y);
 
 	glm::mat4 &getProjectionMatrix();
 	glm::mat4 &getModelViewMatrix();
 
-private:
-  void computeModelViewMatrix();
-
-private:
 	glm::vec3 position;								// Camera parameters
 	float angleDirection, anglePitch;
 	float rangeDistanceCamera[2];

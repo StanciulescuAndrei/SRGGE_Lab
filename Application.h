@@ -4,6 +4,7 @@
 
 #include "Scene.h"
 #include "TileMap.h"
+#include "Visibility.h"
 
 
 // Application is a singleton (a class with a single instance) that represents our whole app
@@ -23,8 +24,8 @@ public:
 		return G;
 	}
 	
-	void init(TileMap tilemap);
-	bool loadMesh(const char *filename);
+	void init(TileMap tilemap, bool computeViz);
+	bool loadMesh(const char *filename, uint8_t id);
 	bool update(int deltaTime);
 	void render();
 	
@@ -58,7 +59,8 @@ private:
 	int32_t end_time = 0;
 	int16_t framecounter = 0; 
 	int16_t num_instances = 1;        
-	float fps = 60.0f;                         
+	float fps = 60.0f;    
+	TileMap tilemap;                     
 };
 
 

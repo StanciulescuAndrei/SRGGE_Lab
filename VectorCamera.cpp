@@ -97,6 +97,11 @@ void VectorCamera::computeModelViewMatrix()
 	modelview = modelview * glm::lookAt(position, position + direction, glm::vec3(0.f, 1.f, 0.f));
 }
 
+void VectorCamera::setPosition(float x, float z){
+	position = glm::vec3(x, position.y, z);
+	computeModelViewMatrix();
+}
+
 glm::mat4 &VectorCamera::getProjectionMatrix()
 {
   return projection;

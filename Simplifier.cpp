@@ -36,9 +36,8 @@ bool Simplifier::loadMesh(const char* filename){
 }
 
 bool Simplifier::computeLODs(int numLODs){
-    int maxOctreeDepth = 9;
-    std::vector<int> LODs = {6, 7, 9}; // 6, 7, 9
-    int LODDepth = 9;
+    int maxOctreeDepth = 10;
+    std::vector<int> LODs = {6, 7, 9, 10}; // 6, 7, 9
     OctreeNode root;
     root.bbox[0] = glm::vec3(0.0);
     root.bbox[1] = glm::vec3(1.0);
@@ -58,22 +57,24 @@ bool Simplifier::computeLODs(int numLODs){
 
     K << 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
     for(int i=0;i<Simplifier::vertices.size();i++){
-        error_metrics.push_back(K);
+        Eigen::Matrix4f M;
+        M << 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+        error_metrics.push_back(M);
     }
 
     for(glm::ivec3 face : Simplifier::faces){
         int v0 = face[0]; int v1 = face[1]; int v2 = face[2];
-        
+        K << 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
         glm::vec3 v01 = Simplifier::vertices[v1] - Simplifier::vertices[v0];
         glm::vec3 v12 = Simplifier::vertices[v2] - Simplifier::vertices[v1];
         glm::vec3 plane_normal = glm::cross(v01, v12);
         plane_normal = glm::normalize(plane_normal);
-        float d = -glm::dot(plane_normal, Simplifier::vertices[v0]);
+        float d = -glm::dot(plane_normal, Simplifier::vertices[v1]);
         float a = plane_normal.x; float b = plane_normal.y; float c = plane_normal.z;
         K << a*a, a*b, a*c, a*d,
-            a*b, b*b, b*c, b*d,
-            a*c, b*c, c*c, c*d,
-            a*d, b*d, c*d, d*d;
+            b*a, b*b, b*c, b*d,
+            c*a, c*b, c*c, c*d,
+            d*a, d*b, d*c, d*d;
         error_metrics[v0] += K;
         error_metrics[v1] += K;
         error_metrics[v2] += K;
@@ -85,8 +86,8 @@ bool Simplifier::computeLODs(int numLODs){
         glm::vec4 v = glm::vec4(Simplifier::vertices[i], 1.0f);
         ve(0) = v[0]; ve(1) = v[1]; ve(2) = v[2]; ve(3) = v[3];
         float err = ve.transpose() * error_metrics[i] * ve;
-        if(std::abs(err) > 1e-5)
-            std::cout<<i<<" "<<err<<std::endl;
+        if(std::abs(err) > 1e-5 )
+            std::cout<<i<<" "<<err <<std::endl;
     }
     
 
@@ -95,6 +96,8 @@ bool Simplifier::computeLODs(int numLODs){
     for(auto LOD : LODs){
         current_node_id = 0;
         QEM_nodes = 0;
+        vertex_lookup.clear();
+        octree_vertices.clear();
         buildVertexLUT(&root, &vertex_lookup, &octree_vertices, 1, LOD, &(Simplifier::vertices), &(error_metrics));
         printf("Nodes using QEM: %d (%.3f %%)\n", QEM_nodes, (float)QEM_nodes / current_node_id * 100);
 
@@ -117,10 +120,9 @@ bool Simplifier::computeLODs(int numLODs){
         for (auto &vertex : octree_vertices){
             vertex = vertex * (scale * 1.0001f);
             vertex = vertex + bbox[0];
-            
         }
 
-        printf("Writing simplified mesh...\n");
+        printf("Writing simplified mesh...(scale = (%f, %f, %f))\n", scale.x, scale.y, scale.z);
         writeSimplifications(octree_vertices, lod_faces, LOD);
     }
     

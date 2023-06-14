@@ -7,6 +7,7 @@
 #include "ShaderProgram.h"
 #include "TriangleMesh.h"
 #include "TileMap.h"
+#include "RenderableEntity.h"
 #include <vector>
 
 
@@ -22,7 +23,7 @@ public:
 	~Scene();
 
 	void init(TileMap map);
-	bool loadMesh(const char *filename);
+	bool loadMesh(const char *filename, uint8_t id);
 	void loadMap(TileMap _map);
 	void update(int deltaTime);
 	void render(uint8_t num_instances);
@@ -38,9 +39,10 @@ private:
 private:
   VectorCamera camera;
 	TriangleMesh *cube;
-	std::vector<TriangleMesh *> objects;
+	std::vector<RenderableEntity *> objects;
 	ShaderProgram basicProgram;
 	TileMap tilemap;
+	std::vector<std::vector<uint32_t>> cellVisibility;
 	float currentTime;
 	uint8_t object_codes[5] = {38, 59, 82, 106, 132};
 };

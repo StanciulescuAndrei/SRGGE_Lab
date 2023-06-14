@@ -4,6 +4,7 @@
 #include "Simplifier.h"
 #include <stdlib.h>
 #include "TileMap.h"
+#include <filesystem>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -150,22 +151,22 @@ int main(int argc, char **argv)
 	TileMap map(img, w, h, comp);
 	
 	// Application instance initialization
-	Application::instance().init(map);
+	Application::instance().init(map, !std::filesystem::exists("../../map/visibility.txt"));
 	if(argc == 1){
-		Application::instance().loadMesh("../../models/moai_LOD6.ply");
-		Application::instance().loadMesh("../../models/dragon_LOD6.ply");
-		Application::instance().loadMesh("../../models/frog_LOD6.ply");
-		Application::instance().loadMesh("../../models/Armadillo_LOD6.ply");
-		Application::instance().loadMesh("../../models/lucy_LOD6.ply");
+		Application::instance().loadMesh("../../models/moai", 38);
+		Application::instance().loadMesh("../../models/dragon", 59);
+		Application::instance().loadMesh("../../models/frog", 82);
+		Application::instance().loadMesh("../../models/Armadillo", 106);
+		Application::instance().loadMesh("../../models/lucy", 132);
 	}
 	else if(argc == 2){
-	  Application::instance().loadMesh(argv[1]);
+	  Application::instance().loadMesh(argv[1], 38);
 	}
 	else if(argc == 3 && strcmp(argv[1], "simplify") == 0){
 		printf("Starting LOD generation...\n");
 		Simplifier::instance().loadMesh(argv[2]);
 		printf("Computing LOD...\n");
-		Simplifier::instance().computeLODs(3);
+		Simplifier::instance().computeLODs(4);
 		printf("Done...\n");
 		return 0;
 	}

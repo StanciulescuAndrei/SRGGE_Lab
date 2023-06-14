@@ -42,6 +42,10 @@ void TriangleMesh::initTriangles(const vector<int> &newTriangles)
 	triangles = newTriangles;
 }
 
+uint32_t TriangleMesh::getTriangleCount(){
+	return triangles.size() / 3;
+}
+
 void TriangleMesh::buildCube()
 {
 	float vertices[] = {-1, -1, -1,

@@ -411,7 +411,7 @@ help:
 .PHONY : help
 
 run: all
-	__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia ./BaseCode
+	__GL_SYNC_TO_VBLANK=1 __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia ./BaseCode
 
 simplify: all
 	./BaseCode simplify ../../models/moai.ply

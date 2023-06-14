@@ -5,6 +5,7 @@
 #include <vector>
 #include <queue>
 #include "Octree.h"
+#include <eigen3/Eigen/Dense>
 
 using namespace std;
 
